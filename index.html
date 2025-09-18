@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREE 1000 DIAMOND - Free Fire Top Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            border: 4px solid white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: white;
+        }
+        
+        .diamond-icon {
+            color: #1e90ff;
+            font-size: 20px;
+            margin: 0 5px;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #feb47b;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 2px solid #444;
+            background: #222;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .btn:disabled {
+            background: linear-gradient(to right, #555, #777);
+            cursor: not-allowed;
+        }
+        
+        .btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn i {
+            margin-right: 10px;
+        }
+        
+        .countdown {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+            display: none;
+        }
+        
+        .countdown-timer {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff7e5f;
+            margin: 10px 0;
+        }
+        
+        .success-message {
+            text-align: center;
+            background: rgba(0, 180, 155, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .success-message i {
+            font-size: 50px;
+            color: #00b09b;
+            margin-bottom: 15px;
+        }
+        
+        .diamond-packs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .diamond-pack {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .diamond-pack:hover {
+            transform: scale(1.05);
+            background: rgba(255, 126, 95, 0.2);
+        }
+        
+        .diamond-pack.selected {
+            background: rgba(255, 126, 95, 0.4);
+            border: 2px solid #ff7e5f;
+        }
+        
+        .diamond-pack.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .diamond-pack h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .diamond-pack p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            z-index: 1000;
+            display: none;
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            from { top: -50px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
+        
+        .cooldown-timer {
+            text-align: center;
+            background: rgba(255, 126, 95, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .cooldown-timer h3 {
+            color: #ff7e5f;
+            margin-bottom: 10px;
+        }
+        
+        .cooldown-time {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .diamond-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        
+        .diamond-counter button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: #ff7e5f;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .diamond-counter input {
+            width: 80px;
+            height: 40px;
+            margin: 0 10px;
+            text-align: center;
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #333;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #00b09b, #96c93d);
+            width: 0%;
+            transition: width 1s linear;
+        }
+        
+        .user-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        /* Ad Container Styles */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .ad-label {
+            text-align: center;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 5px;
+        }
+        
+        .ad-top {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .ad-middle {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .ad-bottom {
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .ad-side {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+        }
+        
+        .ad-left {
+            left: 10px;
+        }
+        
+        .ad-right {
+            right: 10px;
+        }
+        
+        .ad-native {
+            width: 100%;
+            min-height: 250px;
+            margin: 15px 0;
+        }
+        
+        /* Responsive adjustments for ads */
+        @media (max-width: 768px) {
+            .ad-side {
+                display: none;
+            }
+            
+            .ad-top, .ad-middle, .ad-bottom {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Sidebar Ad (160x600) -->
+    <div class="ad-container ad-side ad-left">
+        <div class="ad-label">Advertisement</div>
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '4dbe8ae08d742111d1b455652ddc8368',
+                'format' : 'iframe',
+                'height' : 600,
+                'width' : 160,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/4dbe8ae08d742111d1b455652ddc8368/invoke.js"></script>
+    </div>
+
+    <!-- Right Sidebar Ad (160x300) -->
+    <div class="ad-container ad-side ad-right">
+        <div class="ad-label">Advertisement</div>
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '8ce5eb8280f5e65554bd2221c5a7b6db',
+                'format' : 'iframe',
+                'height' : 300,
+                'width' : 160,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/8ce5eb8280f5e65554bd2221c5a7b6db/invoke.js"></script>
+    </div>
+
+    <div class="container">
+        <!-- Top Ad (728x90) -->
+        <div class="ad-container ad-top">
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '82d5e2ed2b3ba66352aa11a58f2fc8a4',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/82d5e2ed2b3ba66352aa11a58f2fc8a4/invoke.js"></script>
+        </div>
+        
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-gem"></i>
+            </div>
+            <h1>FREE 1000 DIAMOND</h1>
+            <p>Free Fire Diamond Top Up</p>
+        </div>
+        
+        <div class="content">
+            <div class="form-group">
+                <label for="uid">FREE FIRE UID (Numbers Only)</label>
+                <input type="text" id="uid" placeholder="Enter your UID" oninput="this.value = this.value.replace(/[^0-9]/g, '')" maxlength="12" />
+            </div>
+            
+            <!-- Middle Ad (300x250) -->
+            <div class="ad-container ad-middle">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '61db0a6e4c97d99b67e4d0b77f78f4fe',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/61db0a6e4c97d99b67e4d0b77f78f4fe/invoke.js"></script>
+            </div>
+            
+            <div class="user-info">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Your Name" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="district">District</label>
+                    <input type="text" id="district" placeholder="Your District" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="upazila">Upazila</label>
+                <input type="text" id="upazila" placeholder="Your Upazila" />
+            </div>
+            
+            <!-- Native Ad Banner -->
+            <div class="ad-container ad-native">
+                <div class="ad-label">Sponsored Content</div>
+                <script async="async" data-cfasync="false" src="//pl27664400.revenuecpmgate.com/272a7abb1595b7143b06a36a457020c8/invoke.js"></script>
+                <div id="container-272a7abb1595b7143b06a36a457020c8"></div>
+            </div>
+            
+            <div class="form-group">
+                <label>Select Diamond Amount (Max 5035)</label>
+                <div class="diamond-counter">
+                    <button onclick="changeDiamonds(-100)">-</button>
+                    <input type="number" id="diamond-amount" value="100" min="100" max="5035" onchange="validateDiamondAmount()" />
+                    <button onclick="changeDiamonds(100)">+</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="diamond-progress"></div>
+                </div>
+                <p style="text-align: center; font-size: 14px; opacity: 0.8;">
+                    Selected: <span id="selected-diamonds">100</span> / 5035 diamonds
+                </p>
+            </div>
+            
+            <!-- Mobile Ad (320x50) -->
+            <div class="ad-container ad-middle">
+                <div class="ad-label">Advertisement</div>
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'e4acfa704ede45693a03eb42fb569e12',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/e4acfa704ede45693a03eb42fb569e12/invoke.js"></script>
+            </div>
+            
+            <button class="btn" id="claim-btn" onclick="startTopUp()">
+                <i class="fas fa-gem"></i> Claim Diamonds
+            </button>
+            
+            <div class="countdown" id="countdown">
+                <p>Processing your top up...</p>
+                <div class="countdown-timer" id="countdown-timer">30</div>
+                <div class="progress-bar">
+                    <div class="progress" id="countdown-progress"></div>
+                </div>
+                <p>Please wait while we process your request</p>
+            </div>
+            
+            <div class="success-message" id="success-message">
+                <i class="fas fa-check-circle"></i>
+                <h2>Top Up Successful!</h2>
+                <p>Your <span id="success-diamonds">100</span> diamonds have been added to your account.</p>
+                <p>Thank you for using our service!</p>
+                
+                <!-- After Success Ad (468x60) -->
+                <div class="ad-container ad-bottom">
+                    <div class="ad-label">Advertisement</div>
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'ffae4e96607a6ffe7524106515eabc81',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/ffae4e96607a6ffe7524106515eabc81/invoke.js"></script>
+                </div>
+            </div>
+            
+            <div class="cooldown-timer" id="cooldown-timer">
+                <h3>Next Claim Available In:</h3>
+                <div class="cooldown-time" id="cooldown-time">05:00:00</div>
+                <p>You can claim diamonds again after this timer expires</p>
+            </div>
+        </div>
+        
+        <!-- Bottom Ad (728x90) -->
+        <div class="ad-container ad-bottom">
+            <div class="ad-label">Advertisement</div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '82d5e2ed2b3ba66352aa11a58f2fc8a4',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/82d5e2ed2b3ba66352aa11a58f2fc8a4/invoke.js"></script>
+        </div>
+        
+        <div class="footer">
+            <p>This is a fan-made application. Not affiliated with Garena Free Fire.</p>
+            <p>© 2023 FREE DIAMOND APP</p>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">
+        Please enter your UID first!
+    </div>
+
+    <!-- Popunder Ad Script -->
+    <script type='text/javascript' src='//pl27664391.revenuecpmgate.com/f8/79/fb/f879fb074f910877f0450cceaaa53734.js'></script>
+    
+    <!-- Social Bar Script -->
+    <script type='text/javascript' src='//pl27664401.revenuecpmgate.com/af/29/83/af298302db56b3776859dcd1f9e8d2ee.js'></script>
+
+    <script>
+        let selectedDiamonds = 100;
+        let countdownInterval = null;
+        let cooldownInterval = null;
+        let cooldownTime = 0;
+        
+        // Check if there's a cooldown in localStorage
+        window.onload = function() {
+            const savedCooldown = localStorage.getItem('diamondCooldown');
+            if (savedCooldown) {
+                cooldownTime = parseInt(savedCooldown);
+                if (cooldownTime > 0) {
+                    showCooldown();
+                }
+            }
+            
+            updateDiamondProgress();
+            
+            // Load smartlink after page loads
+            setTimeout(function() {
+                var script = document.createElement('script');
+                script.src = 'https://www.revenuecpmgate.com/bfqb37en8?key=e67b70546e5e6b0e6bdb6b086fe997d1';
+                document.body.appendChild(script);
+            }, 2000);
+        };
+        
+        function changeDiamonds(amount) {
+            selectedDiamonds += amount;
+            if (selectedDiamonds < 100) selectedDiamonds = 100;
+            if (selectedDiamonds > 5035) selectedDiamonds = 5035;
+            
+            document.getElementById('diamond-amount').value = selectedDiamonds;
+            document.getElementById('selected-diamonds').textContent = selectedDiamonds;
+            updateDiamondProgress();
+        }
+        
+        function validateDiamondAmount() {
+            selectedDiamonds = parseInt(document.getElementById('diamond-amount').value);
+            if (isNaN(selectedDiamonds)) selectedDiamonds = 100;
+            if (selectedDiamonds < 100) selectedDiamonds = 100;
+            if (selectedDiamonds > 5035) selectedDiamonds = 5035;
+            
+            document.getElementById('diamond-amount').value = selectedDiamonds;
+            document.getElementById('selected-diamonds').textContent = selectedDiamonds;
+            updateDiamondProgress();
+        }
+        
+        function updateDiamondProgress() {
+            const progress = (selectedDiamonds / 5035) * 100;
+            document.getElementById('diamond-progress').style.width = progress + '%';
+        }
+        
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+        
+        function startTopUp() {
+            const uid = document.getElementById('uid').value;
+            const name = document.getElementById('name').value;
+            const district = document.getElementById('district').value;
+            const upazila = document.getElementById('upazila').value;
+            
+            if (!uid) {
+                showNotification('Please enter your UID first!');
+                return;
+            }
+            
+            if (!name || !district || !upazila) {
+                showNotification('Please fill in all your information!');
+                return;
+            }
+            
+            if (cooldownTime > 0) {
+                showNotification('Please wait for cooldown to finish before claiming again!');
+                return;
+            }
+            
+            // Hide button and show countdown
+            document.getElementById('claim-btn').style.display = 'none';
+            const countdown = document.getElementById('countdown');
+            countdown.style.display = 'block';
+            
+            let timeLeft = 30;
+            const countdownTimer = document.getElementById('countdown-timer');
+            countdownTimer.textContent = timeLeft;
+            
+            // Start countdown progress
+            const countdownProgress = document.getElementById('countdown-progress');
+            countdownProgress.style.width = '0%';
+            
+            // Start countdown
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                countdownTimer.textContent = timeLeft;
+                countdownProgress.style.width = ((30 - timeLeft) / 30) * 100 + '%';
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    countdown.style.display = 'none';
+                    
+                    // Show success message
+                    const successMessage = document.getElementById('success-message');
+                    document.getElementById('success-diamonds').textContent = selectedDiamonds;
+                    successMessage.style.display = 'block';
+                    
+                    // Start cooldown period (5 hours = 18000000 milliseconds)
+                    cooldownTime = 18000; // 5 hours in seconds (for demo we use 5 hours but shorter for testing)
+                    localStorage.setItem('diamondCooldown', cooldownTime);
+                    
+                    // Show cooldown timer
+                    showCooldown();
+                }
+            }, 1000);
+        }
+        
+        function showCooldown() {
+            const cooldownTimer = document.getElementById('cooldown-timer');
+            const cooldownTimeElement = document.getElementById('cooldown-time');
+            cooldownTimer.style.display = 'block';
+            
+            // Hide claim button during cooldown
+            document.getElementById('claim-btn').style.display = 'none';
+            
+            if (cooldownInterval) clearInterval(cooldownInterval);
+            
+            cooldownInterval = setInterval(() => {
+                cooldownTime--;
+                localStorage.setItem('diamondCooldown', cooldownTime);
+                
+                if (cooldownTime <= 0) {
+                    clearInterval(cooldownInterval);
+                    cooldownTimer.style.display = 'none';
+                    document.getElementById('claim-btn').style.display = 'flex';
+                    localStorage.removeItem('diamondCooldown');
+                    return;
+                }
+                
+                // Format time as HH:MM:SS
+                const hours = Math.floor(cooldownTime / 3600);
+                const minutes = Math.floor((cooldownTime % 3600) / 60);
+                const seconds = cooldownTime % 60;
+                
+                cooldownTimeElement.textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+            
+            // Initial display
+            const hours = Math.floor(cooldownTime / 3600);
+            const minutes = Math.floor((cooldownTime % 3600) / 60);
+            const seconds = cooldownTime % 60;
+            
+            cooldownTimeElement.textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+    </script>
+</body>
+</html>
